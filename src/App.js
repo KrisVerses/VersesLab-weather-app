@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import WeatherDisplay from "./components/WeatherDisplay";
 
 const API_KEY = "d708730abb785ed356340497f9b0296e";
 const BASE_URL = "https://api.openweathermap.org/data/2.5/weather";
@@ -35,13 +36,7 @@ function App() {
       </header>
       {loading && <p>Loading...</p>}
       {error && <p>{error}</p>}
-      {weather && (
-        <div>
-          <h2>City Name: {city}</h2>
-          <p>Weather: {weather.main.temp}°C</p>
-          <p>Condition: {weather.weather[0].description}</p>
-        </div>
-      )}
+      {weather && <WeatherDisplay city={city} weather={weather} />}
     </div>
   );
 }
