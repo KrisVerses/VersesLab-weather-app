@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import WeatherDisplay from "./components/WeatherDisplay";
+import SearchBar from "./components/SearchBar";
 
-const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
+const API_KEY = process.env.REACT_APP_WEATHER_API_KEY?.trim();
 const BASE_URL = "https://api.openweathermap.org/data/2.5/weather";
 
 function App() {
@@ -46,12 +47,11 @@ function App() {
       <header>
         <h1>Weather App</h1>
         <nav>
-          <input
-            value={input}
-            onChange={handleInputChange}
-            placeholder="Enter City"
+          <SearchBar
+            handleInputChange={handleInputChange}
+            handleSearch={handleSearch}
+            input={input}
           />
-          <button onClick={handleSearch}>Search</button>
         </nav>
       </header>
       {loading && <p>Loading...</p>}
