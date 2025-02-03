@@ -32,10 +32,16 @@ function App() {
     <div>
       <header>
         <h1>Weather App</h1>
-        <h2>City Name: {city}</h2>
-        <p>Weather: {weather.main.temp}</p>
-        <p>Condition: {weather.weather[0].description}</p>
       </header>
+      {loading && <p>Loading...</p>}
+      {error && <p>{error}</p>}
+      {weather && (
+        <div>
+          <h2>City Name: {city}</h2>
+          <p>Weather: {weather.main.temp}°C</p>
+          <p>Condition: {weather.weather[0].description}</p>
+        </div>
+      )}
     </div>
   );
 }
